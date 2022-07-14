@@ -2,10 +2,10 @@
 name: Jupyter
 on:
 # Настройка триггеров для автоматического запуска сценария после добавления изменений в проект на GitHub. По умолчанию можно отключить эту возможность - сценарий запускается только в ручном режиме со страницы Actions.
-# push:
-# branches: [ "main" ]
-# pull_request:
-# branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 # Запуск сценария в ручном режиме
   workflow_dispatch:
 # Запуск GitHub Actions состоит из одного или нескольких заданий, которые могут выполняться последовательно или параллельно.
@@ -28,7 +28,7 @@ jobs:
       - name: Exeute Notebook # Выполнение тетрадки Jupyter
         run: jupyter-nbconvert --execute Untitled.ipynb --to html
       - name: Upload a Build Artifact # Выгрузка вывода тетрадки (артефакта задания) в html файл
-        uses: actions/upload-artifact@v3.1.0
+      - uses: actions/upload-artifact@v3.1.0
         with:
           name: Artifact
           path: Untitled.html
